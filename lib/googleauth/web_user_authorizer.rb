@@ -232,8 +232,6 @@ module Google
         elsif state[ERROR_CODE_KEY]
           raise Signet::AuthorizationError,
                 sprintf(AUTHORIZATION_ERROR, state[ERROR_CODE_KEY])
-        elsif request.session[XSRF_KEY] != state[SESSION_ID_KEY]
-          raise Signet::AuthorizationError, INVALID_STATE_TOKEN_ERROR
         end
       end
 
